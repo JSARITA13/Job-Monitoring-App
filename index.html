@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Monitoring App</title>
-    <link rel="stylesheet" href="style.css"> <!-- Links the CSS file -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to the Job Monitoring App</h1>
+    <h1>Job Monitoring App</h1>
 
-    <script src="script.js"></script> <!-- Links the JavaScript file -->
+    <form id="jobForm">
+        <input type="text" id="jobTitle" placeholder="Enter job title" required>
+        <button type="submit">Add Job</button>
+    </form>
+
+    <ul id="jobList"></ul> <!-- Job list will be displayed here -->
+
+    <script src="script.js"></script>
 </body>
 </html>
