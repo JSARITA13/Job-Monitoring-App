@@ -1,7 +1,7 @@
 // Firebase Configuration
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+import { getFirestore, doc, setDoc, getDoc, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
 
 const firebaseConfig = {
     apiKey: "YOUR_API_KEY",
@@ -45,38 +45,4 @@ async function loginUser(email, password) {
         const userDoc = await getDoc(doc(db, "users", user.uid));
         if (userDoc.exists() && userDoc.data().approved) {
             alert("Login successful!");
-            document.getElementById("jobSection").style.display = "block";
-        } else {
-            alert("Your account is not approved yet. Please wait for admin approval.");
-            await signOut(auth);
-        }
-    } catch (error) {
-        alert(error.message);
-    }
-}
-
-// Logout Function
-function logoutUser() {
-    signOut(auth).then(() => {
-        alert("Logged out successfully");
-    }).catch((error) => {
-        alert(error.message);
-    });
-}
-
-// Add event listeners
-document.getElementById("registerForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const email = document.getElementById("registerEmail").value;
-    const password = document.getElementById("registerPassword").value;
-    registerUser(email, password);
-});
-
-document.getElementById("loginForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const email = document.getElementById("loginEmail").value;
-    const password = document.getElementById("loginPassword").value;
-    loginUser(email, password);
-});
-
-document.getElementById("logoutButton").addEventListener("click", logoutUser);
+            document.getElementById("jobSection").style.display =
