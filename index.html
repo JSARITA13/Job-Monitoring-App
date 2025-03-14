@@ -8,14 +8,21 @@
 </head>
 <body>
     <h1>Job Monitoring App</h1>
-
+    
     <form id="jobForm">
         <input type="text" id="jobTitle" placeholder="Enter job title" required>
+        <input type="text" id="assignedTo" placeholder="Assign to" required>
+        <select id="jobStatus">
+            <option value="pending">Pending</option>
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+        </select>
         <button type="submit">Add Job</button>
     </form>
-
-    <ul id="jobList"></ul> <!-- Job list will be displayed here -->
-
+    
+    <h2>Job List</h2>
+    <ul id="jobList"></ul>
+    
     <script src="script.js"></script>
 </body>
 </html>
