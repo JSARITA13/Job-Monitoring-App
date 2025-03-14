@@ -1,0 +1,15 @@
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        console.log("User logged in:", userCredential.user);
+        alert("Login successful!");
+        window.location.href = "dashboard.html"; // Redirect to dashboard
+    } catch (error) {
+        console.error("Error logging in:", error.message);
+        alert(error.message);
+    }
+});
