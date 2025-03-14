@@ -1,27 +1,30 @@
-document.getElementById("jobForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevents form from reloading the page
+document.addEventListener("DOMContentLoaded", () => {
+    const jobForm = document.getElementById("jobForm");
+    const jobList = document.getElementById("jobList");
 
-    let jobTitle = document.getElementById("jobTitle").value.trim();
-    if (jobTitle === "") return;
+    jobForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        
+        const jobTitle = document.getElementById("jobTitle").value;
+        const assignedTo = document.getElementById("assignedTo").value;
+        const jobStatus = document.getElementById("jobStatus").value;
+        
+        if (jobTitle && assignedTo) {
+            const jobItem = document.createElement("li");
+            jobItem.innerHTML = `<strong>${jobTitle}</strong> - Assigned to: ${assignedTo} - Status: <span class="status">${jobStatus}</span> 
+                                <button class="delete">Delete</button>`;
+            
+            jobList.appendChild(jobItem);
+            
+            document.getElementById("jobTitle").value = "";
+            document.getElementById("assignedTo").value = "";
+            document.getElementById("jobStatus").value = "pending";
+        }
+    });
 
-    let jobList = document.getElementById("jobList");
-
-    // Create job list item
-    let li = document.createElement("li");
-    li.textContent = jobTitle;
-
-    // Create delete button
-    let deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "Delete";
-    deleteBtn.classList.add("delete-btn");
-    deleteBtn.onclick = function() {
-        jobList.removeChild(li);
-    };
-
-    // Append button to list item and list item to list
-    li.appendChild(deleteBtn);
-    jobList.appendChild(li);
-
-    // Clear input field
-    document.getElementById("jobTitle").value = "";
+    jobList.addEventListener("click", (event) => {
+        if (event.target.classList.contains("delete")) {
+            event.target.parentElement.remove();
+        }
+    });
 });
