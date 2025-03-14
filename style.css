@@ -1,59 +1,67 @@
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
+    margin: 20px;
+    padding: 20px;
     background-color: #f4f4f4;
 }
 
-h1 {
+h1, h2 {
     color: #333;
 }
 
-#jobForm {
-    margin-bottom: 20px;
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 300px;
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-input {
+input, select, button {
     padding: 8px;
-    margin-right: 5px;
-    width: 250px;
+    font-size: 16px;
 }
 
 button {
-    background-color: #007bff;
+    background-color: #28a745;
     color: white;
-    padding: 8px 15px;
     border: none;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #218838;
 }
 
 ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
 }
 
 li {
     background: white;
-    margin: 5px auto;
     padding: 10px;
-    width: 300px;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 5px;
 }
 
-.delete-btn {
-    background: red;
-    color: white;
-    border: none;
+.status {
+    font-weight: bold;
+    color: #007bff;
+}
+
+button.delete {
+    background-color: #dc3545;
     padding: 5px;
-    cursor: pointer;
 }
 
-.delete-btn:hover {
-    background: darkred;
+button.delete:hover {
+    background-color: #c82333;
 }
